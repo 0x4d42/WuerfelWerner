@@ -5,10 +5,10 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 const commands = [
-    // ** PING-TEST Comand **    
-    new SlashCommandBuilder().setName('ping').setDescription('Antwortet mit pong!'),
-    
-    // ** Würfel Comand **
+        // ** PING-TEST Comand **    
+        new SlashCommandBuilder().setName('ping').setDescription('Antwortet mit pong!'),
+
+        // ** Würfel Comand **
         new SlashCommandBuilder().setName('würfeln')
         .setDescription('Würfelt!')
         // OPTION Auswahl des Würfels
@@ -16,17 +16,11 @@ const commands = [
             option.setName('würfel')
             .setDescription('Wähle den Würfel, welchen du werfen möchtest.')
             .setRequired(true)
-            .addChoices(
-                { name: 'W4', value: '4' }, 
-                { name: 'W6', value: '6' }, 
-                { name: 'W8', value: '8' }, 
-                { name: 'W10', value: '10' }, 
-                { name: 'W12', value: '12' }, 
-                { name: 'W20', value: '20' }, )
+            .addChoices({ name: 'W4', value: '4' }, { name: 'W6', value: '6' }, { name: 'W8', value: '8' }, { name: 'W10', value: '10' }, { name: 'W12', value: '12' }, { name: 'W20', value: '20' }, )
         )
         // OPTION Anzahl der Würfel
-        .addStringOption(
-            option => 
+        .addIntegerOption(
+            option =>
             option.setName('anzahl')
             .setDescription('Anzahl der Würfel')
             .setRequired(false)

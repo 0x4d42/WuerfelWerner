@@ -19,9 +19,21 @@ client.on('interactionCreate', async interaction => {
     if (commandName === 'ping') {
         await interaction.reply('Pong!');
     } else if (commandName === 'würfeln') {
-        let input = interaction.options.getString('würfel');
-        let res = Math.round((Math.random() * (input - 1) + 1));
-        await interaction.reply('Ergebnis: ' + res + '/' + input);
+        // read user input
+        let dice = interaction.options.getString('würfel');
+        let amount = interaction.options.getInteger('anzahl');
+
+        // Sanity check input
+        if (!amount || amount <= 0) {
+            amount = 1
+        }
+
+        // loop over amount
+        for (let index = 0; index < amount; index++) {
+            let res = Math.round((Math.random() * (dice - 1) + 1));
+            await interaction.reply('Ergebnis: ' + res + '/' + dice);
+        }
+
     }
 });
 

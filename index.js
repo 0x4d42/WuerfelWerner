@@ -29,11 +29,12 @@ client.on('interactionCreate', async interaction => {
         }
 
         // loop over amount
+        let resultString = ""
         for (let index = 0; index < amount; index++) {
             let res = Math.round((Math.random() * (dice - 1) + 1));
-            await interaction.reply('Ergebnis: ' + res + '/' + dice);
+            resultString += 'Ergebnis: ' + res + '/' + dice + '\n';
         }
-
+        await interaction.reply(resultString)
     }
 });
 

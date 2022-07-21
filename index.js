@@ -18,7 +18,7 @@ client.on('interactionCreate', async interaction => {
 
     if (commandName === 'ping') {
         await interaction.reply('Pong!');
-    } else if (commandName === 'würfeln') {
+    } else if (commandName === 'würfeln' || commandName === 'w') {
         // read user input
         let dice = interaction.options.getString('würfel');
         let amount = interaction.options.getInteger('anzahl');
